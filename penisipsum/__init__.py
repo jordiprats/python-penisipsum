@@ -27,7 +27,7 @@ penisnames = [
   "perialanum",
   "mastilum",
   "pollenae",
-  "membrum"    
+  "membrum"
 ]
 
 adjectius = [
@@ -79,9 +79,10 @@ nexes = [
   "est"
 ]
 
-def sentence(words=100, base_words="Penis ipsum"):
+def sentence(words=15, base_words="Penis ipsum", capitalize=True, add_period=True):
     message=[]
-    message.append(base_words)
+    if len(base_words.split()) > 0:
+      message.append(base_words)
     for i in range(0, words-len(base_words.split())):
       randword=random.randint(0,i)
       if randword%2 == 0:
@@ -90,4 +91,16 @@ def sentence(words=100, base_words="Penis ipsum"):
         message.append(adjectius[random.randint(0,len(adjectius)-1)])
       else:
         message.append(penisnames[random.randint(0,len(penisnames)-1)])
-    return ' '.join(message)+'.'
+    retstr=' '.join(message)
+    if capitalize:
+      retstr=retstr.capitalize()
+    if add_period:
+      retstr+='.'
+    return retstr
+
+def paragraph(sentences=5, max_words_per_sentence=15, min_words_per_sentence=3):
+    message=[]
+    message.append(sentence(random.randint(0, max_words_per_sentence)))
+    for i in range(0,sentences):
+      message.append(sentence(random.randint(min_words_per_sentence, max_words_per_sentence),'', True, True))
+    return ' '.join(message)
