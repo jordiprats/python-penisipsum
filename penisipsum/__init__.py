@@ -79,10 +79,10 @@ nexes = [
   "est"
 ]
 
-def penisipstum(words=100):
+def penisipstum(words=100, base_words="Penis ipsum"):
     message=[]
-    message.append("Penis")
-    for i in range(0, words-1):
+    message.append(base_words)
+    for i in range(0, words-len(base_words.split())):
       randword=random.randint(0,i)
       if randword%2 == 0:
         message.append(nexes[random.randint(0,len(nexes)-1)])
