@@ -2,3 +2,5 @@
 MANIFEST
 dist/*
 build/*
+tests/*
+penisipsum.egg-info/
